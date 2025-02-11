@@ -1,5 +1,5 @@
 // URL of your Google Apps Script Web App
-const scriptUrl = "https://script.google.com/macros/s/AKfycbzrZ_v6l2Ff18cEcfrPZ29lDqzeufnADUm0ydNNNG2TqyuID3QG3Ey7FhDjbqDt47FiTw/exec";
+const scriptUrl = "https://script.google.com/macros/s/AKfycbyQFpgIXjHVY63LtmNfbIOa82pGnIm5UOD35dq9htbRbrw9TMg8mGwJP3eQuI_8hlDDFQ/exec";
 
 // Function to fetch and display translations
 async function fetchTranslations(lang) {
