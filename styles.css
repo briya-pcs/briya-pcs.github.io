@@ -10,6 +10,9 @@ body{
     .mobile_icon_right {
         display: none;
     }  
+    #corner_qr{
+        display: none;
+    }
 }
 .clickable:hover{
   cursor: pointer;
