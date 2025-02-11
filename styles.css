@@ -1,0 +1,146 @@
+body{
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 20px;
+}
+
+@media (max-width: 400px) {
+    .mobile_icon {
+        display: none;
+    }
+    .mobile_icon_right {
+        display: none;
+    }  
+}
+.clickable:hover{
+  cursor: pointer;
+}
+.currentText{
+  bottom: 0;
+  width: 90%;
+  position: fixed;
+  background-color: white;
+  display: block;
+  /*z-index: 99;*/
+  /*float: left;*/
+}
+.qr_div {
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    min-height: 100vh; /* Ensures full height of the viewport */
+    max-width: 100%; /* Prevents overflow */
+    padding: 20px; /* Adds spacing */
+    box-sizing: border-box;
+}
+
+.qr {
+    height: auto; /* Maintain aspect ratio */
+    max-width: 90%; /* Allows shrinking but prevents it from being too small */
+    width: 200px; /* Base size */
+    border-radius: 20px;
+    flex-shrink: 1; /* Enables shrinking if necessary */
+}
+
+#corner_qr{
+  display: none;
+  height: 150px;
+  right: 20px;
+  z-index: 100;
+  position: fixed;
+}
+
+.mobile_icon{
+  height: 50px;
+  width: 50px;
+  right: 20px;
+  top: .5em;
+  border-radius: 50%;
+  border: 5px solid #0084CB;
+  z-index: 100;
+  float: right;
+  /*position: absolute;*/
+}
+.mobile_icon_right{
+  display: block;
+  height: 50px;
+  width: 50px;
+  right: 20px;
+  border-radius: 50%;
+  border: 5px solid #0084CB;
+  z-index: 100;
+  position: fixed;
+}
+#anchor {
+  overflow-anchor: auto;
+  height: 1px;
+}
+.transcriptBox{
+  /*position: fixed;*/
+  width: 100%;
+  padding-bottom: 40px;
+  height: 80%;
+  bottom: 0;
+  display: block;
+}
+#latestParagraph{
+  font-size: 20px;
+  background-color: yellow;
+}
+#transcript{
+  font-size: 18px;
+  line-height: 2em;
+}
+.langTitle{
+  text-align: center;
+  }
+.languageButtons{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+.button:hover {
+  background-color: #00A2E4; /* Briya blue #2 */
+  color: white;
+}
+.button {
+  background-color: #0084CB; /* Briya Blue */
+  border: none;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  margin: 5px 5px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border-radius: 4px;
+  height: 1.5em;
+}
+#home{
+  background-color: #FBAA19; /*briya orange*/
+  border-radius: 50%;
+  padding: 10px;
+  float: right;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 100;
+  outline: 5px solid white;
+}
+#back{
+  background-color: #0084CB; /*briya orange*/
+  border-radius: 50%;
+  padding: 10px;
+  float: right;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 100;
+  outline: 5px solid white;
+}
+#back img{
+  height: 32px;
+  width: 32px;
+}
