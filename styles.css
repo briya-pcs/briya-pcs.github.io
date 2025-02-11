@@ -3,7 +3,7 @@ body{
   margin: 20px;
 }
 
-@media (max-width: 350px) {
+@media (max-width: 450px) {
     .mobile_icon {
         display: none;
     }
