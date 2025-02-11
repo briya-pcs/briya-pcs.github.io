@@ -137,15 +137,6 @@ body{
   width: 32px;
 }
 
-@media screen and (min-height: 300px) {
-    .languageButtons{
-        top: 0;
-      }
-      .button{
-        width: 20%;
-      }
-
-}
 
 @media screen and (min-height: 800px) {
     .languageButtons{
