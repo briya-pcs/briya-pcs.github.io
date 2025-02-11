@@ -137,6 +137,15 @@ body{
   width: 32px;
 }
 
+@media screen and (max-width: 450px) {
+    .mobile_icon {
+        display: none;
+    }
+    .mobile_icon_right {
+        display: none;
+    }  
+}
+
 
 @media screen and (min-height: 800px) {
     .languageButtons{
