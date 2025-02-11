@@ -3,14 +3,6 @@ body{
   margin: 20px;
 }
 
-@media screen and (max-width: 450px) {
-    .mobile_icon {
-        display: none !important;
-    }
-    .mobile_icon_right {
-        display: none !important;
-    }  
-}
 .clickable:hover{
   cursor: pointer;
 }
@@ -145,4 +137,22 @@ body{
   width: 32px;
 }
 
+@media screen and (max-width: 450px) {
+    .mobile_icon {
+        display: none;
+    }
+    .mobile_icon_right {
+        display: none;
+    }  
+}
 
+@media screen and (min-height: 800px) {
+    .languageButtons{
+        flex-direction: column;
+        top: 0;
+      }
+      .button{
+        width: 25%;
+      }
+
+}
