@@ -5,10 +5,10 @@ body{
 
 @media screen and (max-width: 450px) {
     .mobile_icon {
-        display: none;
+        display: none !important;
     }
     .mobile_icon_right {
-        display: none;
+        display: none !important;
     }  
 }
 .clickable:hover{
