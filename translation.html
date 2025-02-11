@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="icon.png">
+    <link rel="stylesheet" href="styles.css">
+    <title>Live Translation</title>
+</head>
+<body>
+    <img src="qr.png" id="corner_qr" class="clickable" onclick="showQR()">
+    <img src="mobile_icon.jpg" id="mobile_icon_right" class="mobile_icon_right clickable" onclick="showQR()">  
+    <div class="currentText">
+      <hr>
+      <p id="latestParagraph"></p>
+    </div>
+    
+    <div class="transcriptBox">
+      <p id="transcript"></p>
+    </div>
+    <div id="anchor"></div>       
+    <script src='script.js' type='text/javascript' ></script>
+    <script>
+        // Define page titles for different languages
+        const titles = {
+          amharic: "የአማርኛ ትርጉም",
+          arabic: "الترجمة إلى اللغة العربية",
+          azerbaijani: "Azərbaycan dilinə tərcümə",
+          bengali: "বাংলায় অনুবাদ",
+          burmese: "မြန်မာဘာသာသို့ ဘာသာပြန်ခြင်း။",
+          chinese: "翻译成中文",
+          french: "Traduction en français",
+          persian: "ترجمه به فارسی",
+          portuguese: "Tradução para português",
+          russian: "Перевод на русский язык",      
+          spanish: "Traducción a Español",
+          turkish: "Türkçe'ye çeviri",
+          uzbek: "O'zbek tiliga tarjima",
+          vietnamese: "Dịch sang tiếng Việt"
+        };
+
+        // Get language from URL parameter (default to Spanish)
+        const urlParams = new URLSearchParams(window.location.search);
+        const language = urlParams.get("lang") || "spanish";
+
+        // Set the page title dynamically
+        document.title = titles[language] || "Translation";
+      // Fetch translations every 3 seconds
+        var tid = setInterval(() => fetchTranslations(language), 3000); 
+      window.onload = () => fetchTranslations(language); 
+    </script>
+</body>
+</html>
