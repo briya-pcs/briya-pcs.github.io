@@ -1,40 +1,65 @@
-// URL of your Google Apps Script Web App
-const scriptUrl = "https://script.google.com/macros/s/AKfycbyQFpgIXjHVY63LtmNfbIOa82pGnIm5UOD35dq9htbRbrw9TMg8mGwJP3eQuI_8hlDDFQ/exec";
+const WS_SERVER = "https://translation-websocket-k466.onrender.com"; // Your WebSocket server URL
 
-// Function to fetch and display translations
-async function fetchTranslations(lang) {
-    try {
-        let response = await fetch(scriptUrl);
-        let data = await response.json();
-        var currentText = document.getElementById("latestParagraph");
-        var anchor = document.getElementById('anchor');
+let lastTranslation = ""; // Store last received translation to prevent duplicates
 
-        let newText = data[lang].replace(/\n/g, "<br>");
+function connectWebSocket() {
+    const socket = new WebSocket(WS_SERVER);
 
-        if (currentText.innerHTML !== newText) {
-            if (currentText.innerHTML.trim() !== "") {  // Prevents leading <br>
-                document.getElementById("transcript").innerHTML += currentText.innerHTML + "<br>";
+    socket.onopen = () => {
+        console.log("✅ Connected to WebSocket server");
+    };
+
+    socket.onmessage = (event) => {
+        console.log("📩 Received new translation:", event.data);
+
+        try {
+            const data = JSON.parse(event.data);
+            const urlParams = new URLSearchParams(window.location.search);
+            const language = urlParams.get("lang") || "Spanish";
+
+            if (data.translations && data.translations[language]) {
+                let newText = data.translations[language].trim().replace(/\n/g, "<br>");
+
+                // Get elements
+                let currentText = document.getElementById("latestParagraph");
+                let transcript = document.getElementById("transcript");
+                let anchor = document.getElementById("anchor");
+
+                // 🔹 Check if newText is ACTUALLY different from lastTranslation
+                if (newText !== lastTranslation) {
+                    if (currentText.innerHTML.trim() !== "") {  
+                        // Store previous translation in transcript before updating
+                        transcript.innerHTML += currentText.innerHTML + "<br>";
+                    }
+
+                    // Update the latest translation
+                    currentText.innerHTML = newText;
+                    
+                    // Update last received translation
+                    lastTranslation = newText;
+
+                    // Scroll to bottom of transcript
+                    if (anchor) {
+                        anchor.scrollIntoView({ behavior: "smooth" });
+                    }
+                } else {
+                    console.log("📌 No new translation, skipping update.");
+                }
             }
-            currentText.innerHTML = newText;
-            anchor.scrollIntoView({behavior:"smooth"});
-        } else {
-            console.log("same");
-        } 
-    } catch (error) {
-        console.error("Error fetching translations:", error);
-    }
+        } catch (error) {
+            console.error("❌ Error processing WebSocket message:", error);
+        }
+    };
+
+    socket.onerror = (error) => {
+        console.error("⚠️ WebSocket error:", error);
+    };
+
+    socket.onclose = () => {
+        console.warn("⚠️ WebSocket disconnected. Reconnecting in 5 seconds...");
+        setTimeout(connectWebSocket, 5000); // Auto-reconnect if disconnected
+    };
 }
 
-// Fetch translations every 3 seconds
-var tid = setInterval(fetchTranslations, 3000);
-window.onload = fetchTranslations;
-
-function showQR() {
-    if (document.getElementById("corner_qr").style.display == "block"){
-        document.getElementById("corner_qr").style.display = "none";
-        document.getElementById("mobile_icon_right").style.display = "block";
-    } else {
-        document.getElementById("corner_qr").style.display = "block";
-        document.getElementById("mobile_icon_right").style.display = "none";
-    }
-}
+// Start WebSocket connection
+connectWebSocket();
