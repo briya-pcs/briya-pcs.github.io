@@ -62,12 +62,23 @@ function connectWebSocket() {
 }
 
 function showQR() {
-    if (document.getElementById("corner_qr").style.display == "block"){
-        document.getElementById("corner_qr").style.display = "none";
-        document.getElementById("mobile_icon_right").style.display = "block";
+    let cornerQR = document.getElementById("corner_qr");
+    let mobileIconRight = document.getElementById("mobile_icon_right");
+
+    if (cornerQR.style.display === "block") {
+        cornerQR.style.display = "none";
+        mobileIconRight.style.display = "block";
     } else {
-        document.getElementById("corner_qr").style.display = "block";
-        document.getElementById("mobile_icon_right").style.display = "none";
+        cornerQR.style.display = "block";
+        mobileIconRight.style.display = "none";
+
+        // Set a timeout to revert back after 60 seconds if still visible
+        setTimeout(function() {
+            if (cornerQR.style.display === "block") {
+                cornerQR.style.display = "none";
+                mobileIconRight.style.display = "block";
+            }
+        }, 60000); // 60,000 milliseconds = 60 seconds
     }
 }
 
