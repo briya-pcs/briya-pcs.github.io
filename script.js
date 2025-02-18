@@ -61,5 +61,15 @@ function connectWebSocket() {
     };
 }
 
+function showQR() {
+    if (document.getElementById("corner_qr").style.display == "block"){
+        document.getElementById("corner_qr").style.display = "none";
+        document.getElementById("mobile_icon_right").style.display = "block";
+    } else {
+        document.getElementById("corner_qr").style.display = "block";
+        document.getElementById("mobile_icon_right").style.display = "none";
+    }
+}
+
 // Start WebSocket connection
 connectWebSocket();
