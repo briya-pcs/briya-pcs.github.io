@@ -1,15 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-P703TNJXK1"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-    
-      gtag('config', 'G-P703TNJXK1');
-    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="icon.png">
@@ -32,20 +23,20 @@
     <script>
         // Define page titles for different languages
         const titles = {
-          amharic: "የአማርኛ ትርጉም",
-          arabic: "الترجمة إلى اللغة العربية",
-          azerbaijani: "Azərbaycan dilinə tərcümə",
-          bengali: "বাংলায় অনুবাদ",
-          burmese: "မြန်မာဘာသာသို့ ဘာသာပြန်ခြင်း။",
-          chinese: "翻译成中文",
-          french: "Traduction en français",
-          persian: "ترجمه به فارسی",
-          portuguese: "Tradução para português",
-          russian: "Перевод на русский язык",      
-          spanish: "Traducción a Español",
-          turkish: "Türkçe'ye çeviri",
-          uzbek: "O'zbek tiliga tarjima",
-          vietnamese: "Dịch sang tiếng Việt"
+          Amharic: "የአማርኛ ትርጉም",
+          Arabic: "الترجمة إلى اللغة العربية",
+          Azerbaijani: "Azərbaycan dilinə tərcümə",
+          Bengali: "বাংলায় অনুবাদ",
+          Burmese: "မြန်မာဘာသာသို့ ဘာသာပြန်ခြင်း။",
+          Chinese: "翻译成中文",
+          French: "Traduction en français",
+          Persian: "ترجمه به فارسی",
+          Portuguese: "Tradução para português",
+          Russian: "Перевод на русский язык",      
+          Spanish: "Traducción a Español",
+          Turkish: "Türkçe'ye çeviri",
+          Uzbek: "O'zbek tiliga tarjima",
+          Vietnamese: "Dịch sang tiếng Việt"
         };
 
         // Get language from URL parameter (default to Spanish)
@@ -55,10 +46,11 @@
         // Set the page title dynamically
         document.title = titles[language] || "Translation";
       // Fetch translations every 3 seconds
-        var tid = setInterval(() => fetchTranslations(language), 3000); 
-      window.onload = () => fetchTranslations(language); 
+        window.onload = () => {
+            console.log("✅ Page loaded. WebSocket will handle translations.");
+        };
     </script>
-
-    
 </body>
 </html>
+
+
