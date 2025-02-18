@@ -1,4 +1,4 @@
-const WS_SERVER = "https://translation-websocket-k466.onrender.com"; // Your WebSocket server URL
+const WS_SERVER = "wss://translation-websocket-k466.onrender.com"; // Your WebSocket server URL
 
 let lastTranslation = ""; // Store last received translation to prevent duplicates
 
