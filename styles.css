@@ -148,7 +148,7 @@ body{
 }
 
 
-@media screen and (min-height: 800px) {
+/*@media screen and (min-height: 800px) {
     .languageButtons{
         flex-direction: column;
         top: 0;
@@ -158,4 +158,4 @@ body{
         width: 25%;
       }
 
-}
+}*/
