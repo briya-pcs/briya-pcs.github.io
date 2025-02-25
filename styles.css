@@ -151,11 +151,11 @@ body{
 @media screen and (min-height: 550px) {
     .languageButtons{        
         top: 0;
-        width: 90%;
+        width: 100%;
       }
       .button{
-        width: 25%;
-        font-size: 25px;
+        /*width: 25%;*/
+        font-size: 23px;
       }
 
 }
