@@ -12,9 +12,17 @@
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
+  
   gtag('js', new Date());
-
   gtag('config', 'G-P703TNJXK1');
+
+  // Send a "heartbeat" event every 5 minutes (300000 ms)
+  setInterval(function() {
+    gtag('event', 'heartbeat', {
+      'event_category': 'Engagement',
+      'event_label': 'User Still Active'
+    });
+  }, 300000); // 5 minutes
 </script>
 <body>
     <img src="qr.png" id="corner_qr" class="clickable" onclick="showQR()">
