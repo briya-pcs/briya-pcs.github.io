@@ -16,14 +16,21 @@
   gtag('js', new Date());
   gtag('config', 'G-P703TNJXK1');
 
-  // Send a "heartbeat" event every 5 minutes (300000 ms)
-  setInterval(function() {
+  // Function to send a heartbeat event
+  function sendHeartbeat() {
+    console.log("Sending heartbeat event to Google Analytics");
     gtag('event', 'heartbeat', {
-      'event_category': 'Engagement',
       'event_label': 'User Still Active'
     });
-  }, 300000); // 5 minutes
+  }
+
+  // Wait for the GA script to fully load before starting the interval
+  window.addEventListener("load", function() {
+    console.log("Google Analytics script loaded, starting heartbeat...");
+    setInterval(sendHeartbeat, 300000); // 5 minutes
+  });
 </script>
+
 <body>
     <img src="qr.png" id="corner_qr" class="clickable" onclick="showQR()">
     <img src="mobile_icon.jpg" id="mobile_icon_right" class="mobile_icon_right clickable" onclick="showQR()">  
