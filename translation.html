@@ -17,8 +17,12 @@
     gtag('config', 'G-P703TNJXK1');
       
     setInterval(() => {
-      gtag('js', new Date());
-    }, 300000); // 300,000 ms = 5 minutes  
+      gtag('event', 'heartbeat', {
+        'event_category': 'user_engagement',
+        'event_label': '5-minute mark',
+        'timestamp': new Date().toISOString()
+      });
+    }, 300000);
 </script>
 
 <body>
