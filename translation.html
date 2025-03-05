@@ -67,14 +67,6 @@
         window.onload = () => {
             console.log("✅ Page loaded. WebSocket will handle translations.");
         };
-
-    setInterval(() => {
-      gtag('event', 'heartbeat', {
-        'event_category': 'user_engagement',
-        'event_label': '5-minute mark',
-        'timestamp': new Date().toISOString()
-      });
-    }, 300000);
     </script>
 </body>
 </html>
